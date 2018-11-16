@@ -122,11 +122,15 @@ def write_account_info(accounts_info):
 
 
 def generate_report():
+    print('Parsing and processing bank accounts file...')
+
     raw_accounts_data = parse_file('data/bankaccounts.txt')
     processed_accounts_data = [group_number_data(raw_data) for raw_data in raw_accounts_data]
     identified_accounts_data = [identify_account_numbers(number_data) for number_data in processed_accounts_data]
     accounts_info = [build_account_info(account) for account in identified_accounts_data]
     write_account_info(accounts_info)
+
+    print("All done!")
 
 
 if __name__ == "__main__":
